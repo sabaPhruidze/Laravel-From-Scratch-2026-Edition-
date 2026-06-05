@@ -5,6 +5,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/prisma',function() {
+    return view('prisma',[
+        'greeting' => 'hello',
+        'person' => request('person','world'),
+        // თუ link ში არ არის person ის განმარტება ჩაწერს worldს
+    ]);
+});
 // shortly written 
 Route::view('/about','about',[
     'greeting' => 'About us',
