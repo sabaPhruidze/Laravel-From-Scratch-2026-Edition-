@@ -43,11 +43,13 @@ Route::get('/additional-tasks', function () {
     ]);
 });
 Route::get('/forms', function () {
-    $ideas = session()->get('ideas');
+    $ideas = session()->get('ideas', []); // თუ არაფერი ეწერება ცარიელ array ის დააბრუნებს
     return view('forms', [
         'ideas' => $ideas
     ]);
 });
+//Session არის დროებითი საცავი სერვერზე, სადაც Laravel/PHP
+//კონკრეტული მომხმარებლის მონაცემებს ინახავს რამდენიმე request-ს შორის
 // post ის დროს არ მჭირდება ფაილის შექმნა POST /ideas მხოლოდ მონაცემს
 //ინახავს Session-ში და შემდეგ /forms-ზე აბრუნებს მომხმარებელს.
 Route::post('/ideas', function () {
@@ -60,4 +62,8 @@ Route::post('/ideas', function () {
 
     //dd(request()->all());ყველაფერს ვიღებთ. ეს წამოიღებს ტოკენს და ასევე ტესტს რაც ჩვწერეთ textareaში
     // CSRF- Cross site request forgery ერთი საიტიდან უშვებს ბრძანებას, რომელიც მეორეზე საიტზე, გვერდზე ან აპლიკაციაზე ახდენს გავლენას.
+});
+Route::get('/delete-ideas', function () {
+    session()->forget('ideas');
+    return redirect('/forms');
 });

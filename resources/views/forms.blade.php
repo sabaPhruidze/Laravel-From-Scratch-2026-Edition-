@@ -17,7 +17,7 @@
         </div>
     </form>
     @unless (count($ideas))
-        <p>There are no additional tasks</p>
+        <p>There are no ideas written</p>
     @endunless
     @if (count($ideas))
         <ul class="w-full flex justify-between gap-2 flex-wrap">
