@@ -1,3 +1,7 @@
 <x-layout>
-    additional-tasks
+    <ul>
+        @foreach ($tasks as $task)
+            <li>{{$task}}</li>
+        @endforeach
+    </ul>
 </x-layout>
