@@ -20,4 +20,11 @@
     @unless (count($addTasks))
         <p>There are no additional tasks</p>
     @endunless
+
+    {{--თუ მიმდინარე მომხმარებელს აქვს $post-ის რედაქტირების უფლება,
+    მაშინ აჩვენე Edit ლინკი.--}}
+    @can('edit',$post)
+        <a href="/posts/1/edit">Edit</a>
+    @endcan
+
 </x-layout>
