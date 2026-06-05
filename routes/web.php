@@ -12,12 +12,12 @@ Route::get('/prisma',function() {
         // თუ link ში არ არის person ის განმარტება ჩაწერს worldს
     ]);
 });
-// shortly written 
+// shortly written
 Route::view('/about','about',[
     'greeting' => 'About us',
     'owner' => 'Saba Ph'
 ]);
-// greeting is like a prop that pass it's data by writing that 
+// greeting is like a prop that pass it's data by writing that
 //$greeting
 Route::view('/contact','contact',[
     'phone' => request('number')
@@ -39,5 +39,6 @@ Route::get('/additional-tasks',function() {
             'Walk the dog',
             'Match a video toturial'
         ],
+        'addTasks' => [],
     ]);
 });
