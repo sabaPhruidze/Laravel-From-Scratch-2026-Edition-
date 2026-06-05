@@ -20,6 +20,7 @@
     <body class="bg-white">
         <div>
             <a href="/about">About us</a>
+            <a href="/contact">Contact us</a>
         </div>
     </body>
 </html>
