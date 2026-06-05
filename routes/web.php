@@ -23,3 +23,12 @@ Route::view('/contact','contact',[
     'phone' => request('number')
 ]);
 // query string ში რომ ჩანდეს და ის ამოვიღოთ მაგ: ?person=frank
+Route::get('/tasks',function() {
+    return view('tasks',[
+        'tasks' => [
+            'Go to the market',
+            'Walk the dog',
+            'Match a video toturial'
+        ],
+    ]);
+});

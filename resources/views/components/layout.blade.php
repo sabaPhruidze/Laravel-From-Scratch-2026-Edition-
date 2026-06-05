@@ -48,6 +48,7 @@
             <a href="/about">About us</a>
             <a href="/contact">Contact us</a>
             <a href="/prisma">Prisma</a>
+            <a href="/tasks">tasks</a>
         </nav>
     <main>
         {{$slot}}
