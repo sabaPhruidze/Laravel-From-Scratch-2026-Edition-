@@ -42,7 +42,26 @@
     ეს უფრო მარტივად laravel ში ჩაიწერება ასე:
     --}}
 
-    {{--this is the blade directives @if and @endif--}}
+    {{--this is the blade directives @if and @endif @ ვნახო ყველა blade directives
+    Blade Directive არის სპეციალური ბრძანება, რომელიც 
+    იწყება @ ნიშნით და Laravel-ის Blade Template Engine-ს ეუბნება 
+    რა გააკეთოს.
+    @foreach
+    @endforeach
+
+    @for
+    @endfor
+
+    @while
+    @endwhile
+
+    @include
+
+    @extends
+
+    @section
+    @endsection
+    --}}
     @if (count($tasks))
      <p>Yes, we have some tasks. How many? 
      <?= count($tasks) ?> tasks in fact</p>

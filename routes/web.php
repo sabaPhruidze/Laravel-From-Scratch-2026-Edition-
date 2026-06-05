@@ -32,3 +32,12 @@ Route::get('/tasks',function() {
         ],
     ]);
 });
+Route::get('/additional-tasks',function() {
+    return view('additional-tasks',[
+        'tasks' => [
+            'Go to the market',
+            'Walk the dog',
+            'Match a video toturial'
+        ],
+    ]);
+});
