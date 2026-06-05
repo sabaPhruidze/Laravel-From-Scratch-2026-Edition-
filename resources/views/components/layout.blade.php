@@ -1,13 +1,13 @@
 @props([
  'title' => 'laracasts'
 ])
-<!-- 
+<!--
         title არის prop; თუ id ან class გავაგზავნი ჩაითვლება ატრიბუტად და არა props
         title's default value will be 'laracasts'
-        props() გამოიყენება Blade Component-ში იმ მონაცემების 
+        props() გამოიყენება Blade Component-ში იმ მონაცემების
         (props) მისაღებად, რომლებიც კომპონენტს გარედან გადაეცემა.
         props(['title' => 'laracasts']) ნიშნავს:
-        თუ კომპონენტს title გადაეცა, გამოიყენე ის. თუ არ გადაეცა, 
+        თუ კომპონენტს title გადაეცა, გამოიყენე ის. თუ არ გადაეცა,
         ნაგულისხმევი (default) მნიშვნელობა იყოს "laracasts".
         -->
 <!DOCTYPE html>
@@ -16,9 +16,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{$title}}</title> 
+        <title>{{$title}}</title>
         <!--  making common title dynamic -->
-         
+
         @fonts
 
         <!-- Styles / Scripts -->
@@ -28,15 +28,15 @@
             <style>
                 nav > a {
                     color:green;
-                    
+
                 }
                 .max-w-400 {
                     max-width:400px;
                     margin:auto;
                 }
                 .card {
-                    background:#e3e3e3; 
-                    padding:1rem; 
+                    background:#e3e3e3;
+                    padding:1rem;
                     text-align=center;
                 }
             </style>
@@ -50,11 +50,12 @@
             <a href="/prisma">Prisma</a>
             <a href="/tasks">tasks</a>
             <a href='/additional-tasks'>add-tasks</a>
+            <a href="/forms">forms</a>
         </nav>
     <main>
         {{$slot}}
     </main>
-    <!-- $slot არის ადგილი, სადაც შვილ კომპონენტიდან 
+    <!-- $slot არის ადგილი, სადაც შვილ კომპონენტიდან
      გადმოცემული HTML გამოჩნდება -->
     </body>
 </html>

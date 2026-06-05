@@ -42,3 +42,4 @@ Route::get('/additional-tasks',function() {
         'addTasks' => [],
     ]);
 });
+Route::view('/forms','forms');
