@@ -19,7 +19,7 @@
     </head>
     <body class="bg-white">
         <div>
-            <a href="about">About us</a>
+            <a href="/about">About us</a>
         </div>
     </body>
 </html>
