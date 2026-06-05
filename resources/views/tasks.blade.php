@@ -11,4 +11,35 @@
         --}}
    @dump($tasks)
    <p>Helo</p>
+
+    <?php if(count($tasks)) : ?>
+        {{--
+        აქ : ცვლის { ფიგურულ ფრჩხილს.ანუ:
+        if (count($tasks)) :  იგივეა რაც:
+        if (count($tasks)) {
+        --}}
+     <p>
+     Yes, we have some tasks. How many? 
+     <?= count($tasks) ?> 
+     {{--
+     ეს: <?= count($tasks) ?> ზუსტად იგივეა რაც:
+         <?php echo count($tasks); ?>
+     --}}
+     tasks, in fact
+    </p>
+    <?php endif; ?>
+    {{--
+    
+    რადგან : გამოვიყენეთ {-ის ნაცვლად, დახურვისთვის }-
+    ის ნაცვლად უნდა დავწეროთ endif.
+    <?php if (count($tasks)) : ?>
+    ...
+    <?php endif; ?>
+
+    იგივეა რაც:
+
+    <?php
+    if (count($tasks)) { }
+    ?>
+    --}}
 </x-layout>
