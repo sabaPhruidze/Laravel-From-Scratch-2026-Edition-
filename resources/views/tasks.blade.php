@@ -38,8 +38,13 @@
 
     იგივეა რაც:
 
-    <?php
-    if (count($tasks)) { }
-    ?>
+    <?php if (count($tasks)) { } ?>
+    ეს უფრო მარტივად laravel ში ჩაიწერება ასე:
     --}}
+
+    {{--this is the blade directives @if and @endif--}}
+    @if (count($tasks))
+     <p>Yes, we have some tasks. How many? 
+     <?= count($tasks) ?> tasks in fact</p>
+    @endif
 </x-layout>
