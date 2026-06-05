@@ -3,6 +3,10 @@
         @foreach ($tasks as $task)
             <li>{{$task}}</li>
         @endforeach
+
+        @foreach($tasks as $task)
+            <li>{{$task}}</li>
+        @endforeach
     </ul>
     {{--if else ივით რომ ჩავწერო foreach ქვევით:--}}
     <ul>
@@ -22,9 +26,12 @@
     @endunless
 
     {{--თუ მიმდინარე მომხმარებელს აქვს $post-ის რედაქტირების უფლება,
-    მაშინ აჩვენე Edit ლინკი.--}}
+    მაშინ აჩვენე Edit ლინკი.
+
     @can('edit',$post)
         <a href="/posts/1/edit">Edit</a>
     @endcan
+    --}}
+
 
 </x-layout>

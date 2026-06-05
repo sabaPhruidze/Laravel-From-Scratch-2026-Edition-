@@ -1,9 +1,9 @@
 <x-layout>
-    
-    {{--
+
+       {{--
        <?php die(var_dump($tasks)) ?>
-       სკრიპტის შესრულების შეწყვეტას იწვევს die-- 
-        var_dump($tasks) — გამოაქვს $tasks ცვლადის სრული სტრუქტურა და მნიშვნელობები.
+       სკრიპტის შესრულების შეწყვეტას იწვევს die-- var_dump($tasks)
+       — გამოაქვს $tasks ცვლადის სრული სტრუქტურა და მნიშვნელობები.
         die() — ამის შემდეგ მაშინვე აჩერებს PHP-ის მუშაობას.
         ამიტომ ეკრანზე დაინახავ $tasks-ის შიგთავსს და დანარჩენი კოდი აღარ შესრულდება.
         შესაბამისად აქ მხოლოდ $tasks value გამოჩნდება და აღარ layout .
@@ -19,8 +19,8 @@
         if (count($tasks)) {
         --}}
      <p>
-     Yes, we have some tasks. How many? 
-     <?= count($tasks) ?> 
+     Yes, we have some tasks. How many?
+     <?= count($tasks) ?>
      {{--
      ეს: <?= count($tasks) ?> ზუსტად იგივეა რაც:
          <?php echo count($tasks); ?>
@@ -29,7 +29,7 @@
     </p>
     <?php endif; ?>
     {{--
-    
+
     რადგან : გამოვიყენეთ {-ის ნაცვლად, დახურვისთვის }-
     ის ნაცვლად უნდა დავწეროთ endif.
     <?php if (count($tasks)) : ?>
@@ -42,9 +42,9 @@
     ეს უფრო მარტივად laravel ში ჩაიწერება ასე:
     --}}
 
-    {{--this is the blade directives @if and @endif @ ვნახო ყველა blade directives
-    Blade Directive არის სპეციალური ბრძანება, რომელიც 
-    იწყება @ ნიშნით და Laravel-ის Blade Template Engine-ს ეუბნება 
+    {{--
+    Blade Directive არის სპეციალური ბრძანება, რომელიც
+    იწყება @ ნიშნით და Laravel-ის Blade Template Engine-ს ეუბნება
     რა გააკეთოს.
     @foreach
     @endforeach
@@ -63,7 +63,7 @@
     @endsection
     --}}
     @if (count($tasks))
-     <p>Yes, we have some tasks. How many? 
+     <p>Yes, we have some tasks. How many?
      <?= count($tasks) ?> tasks in fact</p>
     @endif
 </x-layout>
