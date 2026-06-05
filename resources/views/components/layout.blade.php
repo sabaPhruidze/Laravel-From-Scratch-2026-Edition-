@@ -47,7 +47,7 @@
     @endif
 </head>
 
-<body class="bg-white">
+<body class="bg-gray-700 text-white p-6 max-w-xl mx-auto">
     <nav class='flex flex-row justify-evenly'>
         <a href="/">home</a>
         <a href="/about">About us</a>
