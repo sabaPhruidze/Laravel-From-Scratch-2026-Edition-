@@ -1,3 +1,3 @@
 <x-layout title='About us'>
- <h1>About us</h1>
+ <h1>{{$greeting}}</h1>
 </x-layout>
