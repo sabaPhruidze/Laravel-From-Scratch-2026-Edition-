@@ -31,3 +31,5 @@
   ნიშნავს: PHP-ით გაუშვი Laravel-ის ბრძანებების სისტემა
 - 0001 ფაილები migrations_ში არის Laravel-ის default migrations. Laravel ახალ პროექტში ავტომატურად გაძლევს რამდენიმე migration-ს,create_users_table ქმნის users ცხრილს database-ში. create_ideas_table ქმნის ideas ცხრილს.
 - 'php artisan migrate'. tables ში რაიმე ცვლილებისას, მაგალითად ახალი column დამატებისას მჭირდება რომ გავუშვა migration ბრძანება
+- SQLite Viewer extention დავაყენე შესაბამისად პირდაპირ vscode ში ვნახულობ database
+- generic database query and than eloquent

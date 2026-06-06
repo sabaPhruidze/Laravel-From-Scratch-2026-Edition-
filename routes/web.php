@@ -1,9 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+
+use Illuminate\Support\Facades\DB; // როცა დავწერ DB, იგულისხმე Laravel-ის DB კლასი.
+use Illuminate\Support\Facades\Route; // როცა დავწერ Route, იგულისხმე Laravel-ის Route კლასი.
+
 
 Route::get('/', function () {
-    return view('welcome');
+    $ideas = DB::table('ideas') -> get(); // database დან მივიღე data table 'ideas გან'
+   //dd($ideas);
+    return $ideas; 
+    // ასე აბრუნებს როგორც json ,შემდეგ კონკრეტული რომ მივიღოთ $ideas[0]->description
+    /*
+    return view('welcome',[
+        'ideas'=>$ideas,
+    ]);
+    
+    */
 });
 Route::get('/prisma', function () {
     return view('prisma', [
