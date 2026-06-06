@@ -1,6 +1,7 @@
 @props([
     'title' => 'laracasts',
 ])
+
 <!--
         title არის prop; თუ id ან class გავაგზავნი ჩაითვლება ატრიბუტად და არა props
         title's default value will be 'laracasts'
@@ -41,7 +42,7 @@
             .card {
                 background: #e3e3e3;
                 padding: 1rem;
-                text-align=center;
+                text-align:center;
             }
         </style>
     @endif
@@ -60,8 +61,7 @@
     <main>
         {{ $slot }}
     </main>
-    <!-- $slot არის ადგილი, სადაც შვილ კომპონენტიდან
-     გადმოცემული HTML გამოჩნდება -->
+    <!-- $slot არის ადგილი, სადაც შვილ კომპონენტიდან გადმოცემული HTML გამოჩნდება -->
 </body>
 
 </html>
