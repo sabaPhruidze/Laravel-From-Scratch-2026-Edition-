@@ -40,7 +40,7 @@
             }
 
             .card {
-                background: #e3e3e3;
+                background: gray;
                 padding: 1rem;
                 text-align:center;
             }

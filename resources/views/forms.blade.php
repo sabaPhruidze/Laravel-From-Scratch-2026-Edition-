@@ -1,7 +1,12 @@
 <x-layout>
     <form method='POST' action="/ideas">
         @csrf
-        {{-- ეს csrf ააქტიურებს დაცვას და form ში ამატებს hidden input ს ტოკენით --}}
+        {{-- 
+        ეს csrf ააქტიურებს დაცვას და form ში ამატებს hidden input ს ტოკენით 
+        @csrf ავტომატურად ამატებს ასეთ hidden input-ს: Laravel მერე ამოწმებს: 
+        ფორმიდან მოსული _token == session-ში შენახულ token-ს? 
+        თუ ემთხვევა — request გადის , თუ არ ემთხვევა — Laravel აგდებს 419 Page Expired შეცდომას.
+        --}}
         <div class="col-span-full">
             <label for="about" class="block text-sm/6 font-medium text-white">New ideas</label>
             <div class="mt-2">
