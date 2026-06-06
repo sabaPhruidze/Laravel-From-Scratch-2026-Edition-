@@ -63,7 +63,8 @@ Route::post('/ideas', function () {
     //dd(request()->all());ყველაფერს ვიღებთ. ეს წამოიღებს ტოკენს და ასევე ტესტს რაც ჩვწერეთ textareaში
     // CSRF- Cross site request forgery ერთი საიტიდან უშვებს ბრძანებას, რომელიც მეორეზე საიტზე, გვერდზე ან აპლიკაციაზე ახდენს გავლენას.
 });
-Route::get('/delete-ideas', function () {
+//-> ნიშნავს: ობიექტის შიგნით არსებული method-ის ან property-ის გამოძახებას. 
+Route::delete('/ideas', function () {
     session()->forget('ideas');
     return redirect('/forms');
 });
