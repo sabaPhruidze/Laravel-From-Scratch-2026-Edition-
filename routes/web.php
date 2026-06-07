@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Route; // როცა დავწერ Route, 
 
 
 Route::get('/', function () {
-    $ideas = DB::table('ideas') -> get(); // database დან მივიღე data table 'ideas გან'
+    //$ideas = DB::table('ideas') -> get(); // database დან მივიღე data table 'ideas გან'
    //dd($ideas);
+   //eloquent - ORM -active recond implementation
+   $ideas =Idea::all(); // Idea::(1);
     return view('welcome',[
         'ideas'=> $ideas,
     ]); 
