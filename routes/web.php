@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Route; // როცა დავწერ Route, 
 Route::get('/', function () {
     $ideas = DB::table('ideas') -> get(); // database დან მივიღე data table 'ideas გან'
    //dd($ideas);
-    return $ideas; 
-    // ასე აბრუნებს როგორც json ,შემდეგ კონკრეტული რომ მივიღოთ $ideas[0]->description
+    return view('welcome',[
+        'ideas'=> $ideas,
+    ]); 
+    // return $ideas ასე აბრუნებს როგორც json ,შემდეგ კონკრეტული რომ მივიღოთ $ideas[0]->description
     /*
     return view('welcome',[
         'ideas'=>$ideas,

@@ -12,6 +12,7 @@ return new class extends Migration
         Schema::create('ideas', function (Blueprint $table) {
             $table->id();
             $table->text('description'); //string => 255 character max ; text for big texts
+            $table->string('state');
             $table->timestamps();
         });
     }
