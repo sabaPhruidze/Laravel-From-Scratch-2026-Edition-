@@ -9,19 +9,24 @@ Route::get('/', function () {
     //$ideas = DB::table('ideas') -> get(); // database დან მივიღე data table 'ideas გან'
    //dd($ideas);
    //eloquent - ORM -active recond implementation
-   $ideas =Idea::all(); //Idea::all() Idea::(1);
+   //$ideas =Idea::where('state','pending')->get(); //Idea::all() Idea::(1);
    //dd($ideas); attribute ში გამოჩნდება dump var ივით.
    //return $ideas;
-    return view('welcome',[
-        'ideas'=> $ideas,
-    ]); 
+   $ideas = Idea::query()
+   ->when(request('state'),function($query,$state){
+    //dd($state); //http://127.0.0.1:8000/?state=pending ამ ლინკზე აჩვენებს pendins თუ active დავუწერ activeს ??????????
+    $query->where('state',$state);
+   })
+   ->get();
+    // return view('welcome',[
+    //     'ideas'=> $ideas,
+    // ]); 
     // return $ideas ასე აბრუნებს როგორც json ,შემდეგ კონკრეტული რომ მივიღოთ $ideas[0]->description
-    /*
+    
     return view('welcome',[
         'ideas'=>$ideas,
     ]);
-    
-    */
+   
 });
 Route::get('/prisma', function () {
     return view('prisma', [
@@ -71,8 +76,12 @@ Route::get('/forms', function () {
 // post ის დროს არ მჭირდება ფაილის შექმნა POST /ideas მხოლოდ მონაცემს
 //ინახავს Session-ში და შემდეგ /forms-ზე აბრუნებს მომხმარებელს.
 Route::post('/ideas', function () {
-    $idea = request('about'); //დავიჭირეთ იდეა
-    session()->push('ideas', $idea); // გავუშვით sessionში.
+    
+    Idea::create([
+        'description'=>request('about'),//დავიჭირეთ იდეა
+        'state'=> 'pending'//??
+    ]); // welcome გვერდზე გამოჩნდება
+    session()->push('ideas', request('about')); // გავუშვით sessionში. forms ში გამოჩნდება
     return redirect('/forms');
     // dd('hello'); dd ნიშნავს:
     //Dump → გამოიტანე მნიშვნელობა ეკრანზე.
