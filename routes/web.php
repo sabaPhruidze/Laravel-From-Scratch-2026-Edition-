@@ -1,15 +1,17 @@
 <?php
 
 
-use Illuminate\Support\Facades\DB; // როცა დავწერ DB, იგულისხმე Laravel-ის DB კლასი.
+//use Illuminate\Support\Facades\DB;  როცა დავწერ DB, იგულისხმე Laravel-ის DB კლასი.
 use Illuminate\Support\Facades\Route; // როცა დავწერ Route, იგულისხმე Laravel-ის Route კლასი.
-
+use App\models\Idea;
 
 Route::get('/', function () {
     //$ideas = DB::table('ideas') -> get(); // database დან მივიღე data table 'ideas გან'
    //dd($ideas);
    //eloquent - ORM -active recond implementation
-   $ideas =Idea::all(); // Idea::(1);
+   $ideas =Idea::all(); //Idea::all() Idea::(1);
+   //dd($ideas); attribute ში გამოჩნდება dump var ივით.
+   //return $ideas;
     return view('welcome',[
         'ideas'=> $ideas,
     ]); 
