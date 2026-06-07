@@ -33,3 +33,5 @@
 - 'php artisan migrate'. tables ში რაიმე ცვლილებისას, მაგალითად ახალი column დამატებისას მჭირდება რომ გავუშვა migration ბრძანება
 - SQLite Viewer extention დავაყენე შესაბამისად პირდაპირ vscode ში ვნახულობ database
 - generic database query and than eloquent
+- თუ migration ში ახალ columns გავუწერ აუცილებლად გავუშვა php artisan migrate:fresh ამის შემდეგ კი ჩავწერო php artisan migrate:refresh ამით დავკარგავთ ყველა შენახულ ინფრომაციას
+-  php artisan make:migration add_state_to_ideas_table -> php artisan migrate
