@@ -56,18 +56,56 @@ Route::get('/about/{id}', function ($id) { // '/about' ნაცვლად ნ
         'selectedIdea' => $selectedIdea
     ]);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/ideas/index', function () { // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
+    //dd($id);// აჩვენებს რა ნომერზეა (კარგია პაგინაციისთვის)
+    //$ideas = Idea::all();
+    //$idea=Idea::where('id',$id)->first();
+    $ideas = Idea::all();
+    return view('ideas.index', [
+        'ideas' => $ideas,
+    ]);
+});
 Route::get('/ideas/index/{id}', function ($id) { // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
     //dd($id);// აჩვენებს რა ნომერზეა (კარგია პაგინაციისთვის)
-    $ideas = Idea::all();
     //$idea=Idea::where('id',$id)->first();
     $selectedIdea = Idea::find($id ? $id : 1);
-    return view('/ideas/index', [
-        'greeting' => 'About us',
+    return view('ideas.show', [
+        'greeting' => 'Ideas index',
         'owner' => 'Saba Ph',
-        'ideas' => $ideas,
         'selectedIdea' => $selectedIdea
     ]);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // greeting is like a prop that pass it's data by writing that
 //$greeting
 Route::view('/contact', 'contact', [

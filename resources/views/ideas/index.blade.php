@@ -22,9 +22,11 @@
 
         </div>
     </form>
-    <h1>{{ $greeting }}</h1>
-    <p>Owner is {{ $owner }}</p>
     <hr />
+    <ul>
+        @foreach ($ideas as $idea)
+            <li>{{ $idea }}</li>
+        @endforeach
+    </ul>
     <hr />
-    <p>{{ $selectedIdea }}</p>
 </x-layout>
