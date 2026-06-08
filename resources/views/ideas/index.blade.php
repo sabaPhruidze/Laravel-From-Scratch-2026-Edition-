@@ -1,16 +1,17 @@
 <x-layout title='About us'>
+    {{--
     <form method='POST' action="/ideas">
         @csrf
-        {{--
+
         ეს csrf ააქტიურებს დაცვას და form ში ამატებს hidden input ს ტოკენით
         @csrf ავტომატურად ამატებს ასეთ hidden input-ს: Laravel მერე ამოწმებს:
         ფორმიდან მოსული _token == session-ში შენახულ token-ს?
         თუ ემთხვევა — request გადის , თუ არ ემთხვევა — Laravel აგდებს 419 Page Expired შეცდომას.
-        --}}
+
         <div class="col-span-full">
             <label for="description" class="block text-sm/6 font-medium text-white">New ideas</label>
             <div class="mt-2">
-                {{-- dd(request()->all()); ეს წამოიღებს ტოკენს და ასევე ტესტს რაც ჩვწერეთ textareaში --}}
+                dd(request()->all()); ეს წამოიღებს ტოკენს და ასევე ტესტს რაც ჩვწერეთ textareaში
                 <textarea id="description" name="description" rows="3"
                     class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 border-3 border-amber-400"></textarea>
             </div>
@@ -22,11 +23,14 @@
 
         </div>
     </form>
-    <hr />
-    <ul class="flex flex-row gap-4 flex-wrap">
-        @foreach ($ideas as $idea)
-            <a href="/ideas/index/{{ $idea->id }}">{{ $idea->description }}</a>
-        @endforeach
-    </ul>
-    <hr />
+  --}}
+    @if ($ideas->count())
+        <ul class="flex flex-row gap-4 w-[200px]">
+            @foreach ($ideas as $idea)
+                <a href="/ideas/index/{{ $idea->id }}">{{ $idea->description }}</a>
+            @endforeach
+        </ul>
+    @else
+        <p>No Ideas yet <a href="/ideas/create" class="text-red-500">Create new one</a></p>
+    @endif
 </x-layout>

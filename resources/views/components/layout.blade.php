@@ -58,6 +58,7 @@
         <a href='/additional-tasks'>add-tasks</a>
         <a href="/forms">forms</a>
         <a href="/ideas/index">index</a>
+        <a href="/ideas/create">create</a>
     </nav>
     <main>
         {{ $slot }}

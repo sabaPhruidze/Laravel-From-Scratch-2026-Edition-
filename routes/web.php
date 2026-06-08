@@ -2,6 +2,8 @@
 
 
 //use Illuminate\Support\Facades\DB;  როცა დავწერ DB, იგულისხმე Laravel-ის DB კლასი.
+
+use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route; // როცა დავწერ Route, იგულისხმე Laravel-ის Route კლასი.
 use App\Models\Idea;
 
@@ -58,53 +60,23 @@ Route::get('/about/{id}', function ($id) { // '/about' ნაცვლად ნ
 });
 
 
-//show all
-Route::get('/ideas/index', function () { // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
-    //dd($id);// აჩვენებს რა ნომერზეა (კარგია პაგინაციისთვის)
-    //$ideas = Idea::all();
-    //$idea=Idea::where('id',$id)->first();
-    $ideas = Idea::all();
-    return view('ideas.index', [
-        'ideas' => $ideas,
-    ]);
-});
+//index
+Route::get('/ideas/index', [IdeaController::class, 'index']); // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
+//create
+Route::get('/ideas/create', [IdeaController::class, 'create']); // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
+
+
 //show one
 // {idea} შეიძლება იყოს 2,3.... და Idea ში იპოვის შესაბამის და მოგვაწვდის $idea აქ
 // /{idea} და $idea ერთი და იგივეა აქ . იგივე უნდა ეწეროს სახელი. Route Model Binding.
 //Route Model Binding ნიშნავს, რომ Laravel თვითონ პოულობს ბაზიდან მოდელს (ჩანაწერს) URL-ში გადაცემული ID-ის მიხედვით.
-Route::get('/ideas/index/{idea}', function (Idea $idea) { // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
-    //dd($id);// აჩვენებს რა ნომერზეა (კარგია პაგინაციისთვის)
-    //$idea=Idea::where('id',$id)->first();
-    //$selectedIdea = Idea::findOrFail($id);  და ქვედა ერთიდაიგივეს აკეთებს
-    // if (is_null($selectedIdea)) {
-    //     abort(404); ვამოწმებთ ამ id ით არის თუ არა data database ში.
-    // } თუ არა გაუშვებს abort404ს .404 Not Found ს დაწერს ეს.
-    return view('ideas.show', [
-        'greeting' => 'Ideas index',
-        'owner' => 'Saba Ph',
-        'selectedIdea' => $idea
-    ]);
-});
+Route::get('/ideas/index/{idea}', [IdeaController::class, 'show']);
 //edit for visual
-Route::get('/ideas/index/{idea}/edit', function (Idea $idea) {
-    return view('ideas.edit', [
-        'idea' => $idea
-    ]);
-});
+Route::get('/ideas/index/{idea}/edit', [IdeaController::class, 'edit']);
 //update
-Route::patch('/ideas/index/{idea}', function (Idea $idea) {
-    $idea->update([
-        'description' => request('description'),
-    ]);
-    return redirect("/ideas/index/{$idea->id}");
-});
+Route::patch('/ideas/index/{idea}', [IdeaController::class, 'update']);
 // destroy
-Route::delete('/ideas/index/{idea}', function (Idea $idea) {
-    $idea->delete();
-    return redirect('/ideas/index');
-});
-
-
+Route::delete('/ideas/index/{idea}', [IdeaController::class, 'destroy']);
 
 // greeting is like a prop that pass it's data by writing that
 //$greeting
@@ -142,21 +114,7 @@ Route::get('/forms', function () {
 // post ის დროს არ მჭირდება ფაილის შექმნა POST /ideas მხოლოდ მონაცემს
 //ინახავს Session-ში და შემდეგ /forms-ზე აბრუნებს მომხმარებელს.
 //store
-Route::post('/ideas', function () {
-
-    Idea::create([
-        "description" => request("description"), //დავიჭირეთ იდეა
-        'state' => 'pending' //??
-    ]); // welcome გვერდზე გამოჩნდება
-    session()->push('ideas', request('description')); // გავუშვით sessionში. forms ში გამოჩნდება
-    return redirect('/forms');
-    // dd('hello'); dd ნიშნავს:
-    //Dump → გამოიტანე მნიშვნელობა ეკრანზე.
-    //Die → შეწყვიტე პროგრამის შესრულება.
-
-    //dd(request()->all());ყველაფერს ვიღებთ. ეს წამოიღებს ტოკენს და ასევე ტესტს რაც ჩვწერეთ textareaში
-    // CSRF- Cross site request forgery ერთი საიტიდან უშვებს ბრძანებას, რომელიც მეორეზე საიტზე, გვერდზე ან აპლიკაციაზე ახდენს გავლენას.
-});
+Route::post('/ideas', [IdeaController::class, 'store']);
 //-> ნიშნავს: ობიექტის შიგნით არსებული method-ის ან property-ის გამოძახებას.
 Route::delete('/ideas', function () {
     session()->forget('ideas');
