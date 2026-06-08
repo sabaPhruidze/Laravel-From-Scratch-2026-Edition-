@@ -50,3 +50,6 @@
 - php artisan make:controller IdeaController ამით ვქმნით კონტროლერს სახელით თუმცა უმჯობესია  php artisan make:controller  გავუშვა შემდეგ მივუთითო თუ რისთვისაა კონტროლერი და ბოლოს Resource მოვნიშნო რომელიც წინასწარ განსზაღვრავს 7 მეთოდს
 - web.php შიგნით რაც მეწერა გადამაქვს სწორი თანმიმდევრობIთ შესაბამისს class ში
 - ფუნქციის შიგნით რაც გვეწერა უბრალოდ ის გადაგვაქვს controller ში. რითაც უფრო სუფთა ხდება კოდი
+# Request Validation
+- validation გამოყენება ხდება ასე:
+$request->validate(['description' => 'required']);
