@@ -23,9 +23,9 @@
         </div>
     </form>
     <hr />
-    <ul>
+    <ul class="flex flex-row gap-4 flex-wrap">
         @foreach ($ideas as $idea)
-            <li>{{ $idea }}</li>
+            <a href="/ideas/index/{{ $idea->id }}">{{ $idea->description }}</a>
         @endforeach
     </ul>
     <hr />

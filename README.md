@@ -40,3 +40,5 @@
 - php artisan make:model Idea Ideas table ისთვის. ქმნის ახალ Model ფაილს
 
 # HTTP Requests and REST
+- GET,POST,PATCH,DELETE ვისწავლე როგორ შევქმნა და გამოვიყენო
+
