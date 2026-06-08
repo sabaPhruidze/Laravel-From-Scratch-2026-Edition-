@@ -33,8 +33,10 @@
 - 'php artisan migrate'. tables ში რაიმე ცვლილებისას, მაგალითად ახალი column დამატებისას მჭირდება რომ გავუშვა migration ბრძანება
 - SQLite Viewer extention დავაყენე შესაბამისად პირდაპირ vscode ში ვნახულობ database
 - generic database query and than eloquent
+- Eloquent არის Laravel-ის უფრო ლამაზი და მარტივი გზა database-თან სამუშაოდ. აქ იყენებ Model-ს. Model არის PHP class, რომელიც Laravel-ში database table-ს უკავშირდება.
+- Generic database query რა არის? ეს არის database-თან მუშაობა პირდაპირ, Model-ის გარეშე.
 - თუ migration ში ახალ columns გავუწერ აუცილებლად გავუშვა php artisan migrate:fresh ამის შემდეგ კი ჩავწერო php artisan migrate:refresh ამით დავკარგავთ ყველა შენახულ ინფრომაციას
 - php artisan make:migration add_state_to_ideas_table -> php artisan migrate
 - php artisan make:model Idea Ideas table ისთვის. ქმნის ახალ Model ფაილს
-  -Eloquent არის Laravel-ის უფრო ლამაზი და მარტივი გზა database-თან სამუშაოდ. აქ იყენებ Model-ს. Model არის PHP class, რომელიც Laravel-ში database table-ს უკავშირდება.
-- Generic database query რა არის? ეს არის database-თან მუშაობა პირდაპირ, Model-ის გარეშე.
+
+# HTTP Requests and REST

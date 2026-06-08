@@ -36,10 +36,14 @@ Route::get('/prisma', function () {
     ]);
 });
 // shortly written
-Route::view('/about', 'about', [
+Route::get('/about', function() {
+    $ideas=Idea::all();
+    return view('about',[
     'greeting' => 'About us',
-    'owner' => 'Saba Ph'
+    'owner' => 'Saba Ph',
+    'ideas' => $ideas
 ]);
+});
 // greeting is like a prop that pass it's data by writing that
 //$greeting
 Route::view('/contact', 'contact', [
