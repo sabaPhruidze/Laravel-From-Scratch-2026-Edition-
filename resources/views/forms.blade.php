@@ -20,7 +20,7 @@
                 უფრო მარტივად ჩაწერის ხერხი
                 name="description" ი უგილისხმება textarea დან
                 --}}
-                <x-forms.error error name='description' />
+                <x-forms.error name='description' />
                 {{--
                 თუ ფაილს ვათავსებ რაიმე ფოლდერის შიგნით,
                 მაშინ მშოელი ფოლდერი x- ს მერე და შემდეგ . გამოყენება
