@@ -42,7 +42,7 @@
             .card {
                 background: gray;
                 padding: 1rem;
-                text-align:center;
+                text-align: center;
             }
         </style>
     @endif
@@ -57,6 +57,7 @@
         <a href="/tasks">tasks</a>
         <a href='/additional-tasks'>add-tasks</a>
         <a href="/forms">forms</a>
+        <a href="/ideas/index/1">index</a>
     </nav>
     <main>
         {{ $slot }}
