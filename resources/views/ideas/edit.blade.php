@@ -24,6 +24,7 @@
 
         </div>
     </form>
+    {{-- id ის გამოყენებით დავაკავშირე ეს form  ღილაკთან form="delete-idea-form" --}}
     <form id='delete-idea-form' method="POST" action="/ideas/index/{{ $idea->id }}">
         @csrf
         @method('DELETE')
