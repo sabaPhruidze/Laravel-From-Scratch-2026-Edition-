@@ -52,4 +52,9 @@
 - ფუნქციის შიგნით რაც გვეწერა უბრალოდ ის გადაგვაქვს controller ში. რითაც უფრო სუფთა ხდება კოდი
 # Request Validation
 - validation გამოყენება ხდება ასე:
-$request->validate(['description' => 'required']);
+- $request->validate(['description' => 'required']);
+- ამით შეგვიძლია გავუწეროთ ზუსტად რა ტიპის ერორია რომ აჩვენოს
+- @if ($errors->has('description'))
+    {{-- ამით ვამოწმებთ არსებობს თუ არა descirption ან აკმაყოფილებს თუ არა validation --}}
+    <p class="text-red-500">{{ $errors->first('description') }}</p>
+- @endif

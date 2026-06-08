@@ -41,8 +41,10 @@ class IdeaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description' => 'required'
+            'description' => ['required', 'min:10']
         ]);
+        //validate დაყენებით აღარ იწვევს errors ცარიელის დამატებისას
+        //min:10 მინიმუმ 10 ასო
         Idea::create([
             "description" => request("description"), //დავიჭირეთ იდეა
             'state' => 'pending' //??
