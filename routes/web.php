@@ -58,16 +58,6 @@ Route::get('/about/{id}', function ($id) { // '/about' ნაცვლად ნ
 });
 
 
-
-
-
-
-
-
-
-
-
-
 //show all
 Route::get('/ideas/index', function () { // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
     //dd($id);// აჩვენებს რა ნომერზეა (კარგია პაგინაციისთვის)
@@ -110,15 +100,11 @@ Route::patch('/ideas/index/{idea}', function (Idea $idea) {
     ]);
     return redirect("/ideas/index/{$idea->id}");
 });
-
-
-
-
-
-
-
-
-
+// destroy
+Route::delete('/ideas/index/{idea}', function (Idea $idea) {
+    $idea->delete();
+    return redirect('/ideas/index');
+});
 
 
 
@@ -157,13 +143,14 @@ Route::get('/forms', function () {
 //კონკრეტული მომხმარებლის მონაცემებს ინახავს რამდენიმე request-ს შორის
 // post ის დროს არ მჭირდება ფაილის შექმნა POST /ideas მხოლოდ მონაცემს
 //ინახავს Session-ში და შემდეგ /forms-ზე აბრუნებს მომხმარებელს.
+//store
 Route::post('/ideas', function () {
 
     Idea::create([
         "description" => request("description"), //დავიჭირეთ იდეა
         'state' => 'pending' //??
     ]); // welcome გვერდზე გამოჩნდება
-    session()->push('ideas', request('about')); // გავუშვით sessionში. forms ში გამოჩნდება
+    session()->push('ideas', request('description')); // გავუშვით sessionში. forms ში გამოჩნდება
     return redirect('/forms');
     // dd('hello'); dd ნიშნავს:
     //Dump → გამოიტანე მნიშვნელობა ეკრანზე.

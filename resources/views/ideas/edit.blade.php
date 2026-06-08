@@ -2,7 +2,7 @@
     <form method='POST' action="/ideas/index/{{ $idea->id }}">
         {{-- method spoofing --}}
         @csrf
-        @method('PATCH');
+        @method('PATCH')
         {{-- დაემატება hidden input --}}
         <div class="col-span-full">
             <label for="description" class="block text-sm/6 font-medium text-white">edit your idea</label>
@@ -18,8 +18,15 @@
         <div class="mt-6 flex items-center gap-x-6">
             <button type="submit"
                 class="cursor-pointer rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Update</button>
+            <button type="submit" form="delete-idea-form"
+                class="cursor-pointer rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500">Delete</button>
+
 
         </div>
+    </form>
+    <form id='delete-idea-form' method="POST" action="/ideas/index/{{ $idea->id }}">
+        @csrf
+        @method('DELETE')
     </form>
 
 </x-layout>
