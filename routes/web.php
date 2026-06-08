@@ -36,12 +36,25 @@ Route::get('/prisma', function () {
     ]);
 });
 // shortly written
-Route::get('/about', function() {
+Route::get('/about', function() { 
+    // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს
     $ideas=Idea::all();
     return view('about',[
     'greeting' => 'About us',
     'owner' => 'Saba Ph',
     'ideas' => $ideas
+]);
+});
+Route::get('/about/{id}', function($id) { // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
+    //dd($id);// აჩვენებს რა ნომერზეა (კარგია პაგინაციისთვის)
+    $ideas=Idea::all();
+    //$idea=Idea::where('id',$id)->first();
+    $selectedIdea = Idea::find($id);
+    return view('about',[
+    'greeting' => 'About us',
+    'owner' => 'Saba Ph',
+    'ideas' => $ideas,
+    'selectedIdea' =>$selectedIdea
 ]);
 });
 // greeting is like a prop that pass it's data by writing that
@@ -97,5 +110,6 @@ Route::post('/ideas', function () {
 //-> ნიშნავს: ობიექტის შიგნით არსებული method-ის ან property-ის გამოძახებას. 
 Route::delete('/ideas', function () {
     session()->forget('ideas');
+    //Idea::truncate(); ესეც შლის უბრალოდ მაშინ როცა eloquent ით ხდება მიღებაც
     return redirect('/forms');
 });
