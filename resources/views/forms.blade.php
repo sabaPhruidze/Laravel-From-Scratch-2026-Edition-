@@ -13,11 +13,18 @@
                 {{-- dd(request()->all()); ეს წამოიღებს ტოკენს და ასევე ტესტს რაც ჩვწერეთ textareaში --}}
                 <textarea id="description" name="description" rows="3"
                     class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 border-3 border-amber-400"></textarea>
-                @if ($errors->has('description'))
-                    {{-- ამით ვამოწმებთ არსებობს თუ არა descirption ან აკმაყოფილებს თუ არა validation --}}
+                {{-- @if ($errors->has('description'))
+                    ამით ვამოწმებთ არსებობს თუ არა descirption ან აკმაყოფილებს თუ არა validation
                     <p class="text-red-500">{{ $errors->first('description') }}</p>
                 @endif
-                {{-- არასდროს გადავამოწმო არის თუ არა error რადგან ყოველთვის არის --}}
+                უფრო მარტივად ჩაწერის ხერხი
+                name="description" ი უგილისხმება textarea დან
+                --}}
+                <x-error name='description' />
+                {{--
+                $message ეს უნდა ჩავწერო და დანარჩენად თვითონ მიხვდება
+                არასდროს გადავამოწმო არის თუ არა error რადგან ყოველთვის არის --}}
+
             </div>
             <p class="mt-3 text-sm/6 text-gray-400">Have an idea you want to save for later?</p>
         </div>
