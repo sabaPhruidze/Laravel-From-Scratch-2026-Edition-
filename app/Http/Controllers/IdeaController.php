@@ -19,9 +19,10 @@ class IdeaController extends Controller
         //$ideas = Idea::all();
         //$idea=Idea::where('id',$id)->first();
         // index ში იქნება ეს ესე რომ კონკრეტული user ის შესაბამისს მონაცემს აჩვენებს
-        $ideas = Idea::query()->where([
-            'user_id' => Auth::id(),
-        ])->get();
+        // $ideas = Idea::query()->where([
+        //     'user_id' => Auth::id(),
+        // ])->get();
+        $ideas = Auth::user()->ideas; // ესეც იგივეს აკეთებს
         // უნდა წამოვიღოთ კონკრეტული user ის მონაცემები
         return view('ideas.index', [
             'ideas' => $ideas,

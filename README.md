@@ -95,5 +95,13 @@
 - middleware ით როგორ შეგვიძლია რომ განვუსაზღვროთ სად გადაამისამართოს როცა ავთენტიფიცირებული არ არის პირი boostrap + web.php
 - guest ბლოკავს რა არ უნდა იყოს ხელმისაწვდომი თუ პირი არის authentificated
 - idea controller ის store ში   'user_id' => Auth::id(), ამის გაწერით უკვე უნიკლაური id ით შესაძლებელი ხდება ამოიცნონ რომელი user ის მიერ ჩაიწერა იდეა
+
+# Eloquent Relationships
 - php artisan tinker არის Laravel-ის ინტერაქტიული PHP კონსოლი. მისი საშუალებით შეგიძლია Laravel-ის კოდი გაუშვა პირდაპირ ტერმინალიდან, Route-ის ან Controller-ის შექმნის გარეშე.
 გამოიყენება user შესაქმნელად , ყველა user სანახავად, მოსაძებნად და ა.შ
+- php artisan tinker შემდეგ შემიძლია ჩავწერო პირველი idea სანახავად:
+- $idea = App\Models\Idea::first();
+- $idea -> user;
+- $user = App\Models\User::first();
+
+# Authorization Using Gates 
