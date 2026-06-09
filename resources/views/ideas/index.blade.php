@@ -25,9 +25,11 @@
     </form>
   --}}
     @if ($ideas->count())
-        <ul class="flex flex-row gap-4 w-[200px]">
+        <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-4">
             @foreach ($ideas as $idea)
-                <a href="/ideas/index/{{ $idea->id }}">{{ $idea->description }}</a>
+                <x-idea-card href="/ideas/index/{{ $idea->id }}">
+                    {{ $idea->description }}
+                </x-idea-card>
             @endforeach
         </ul>
     @else

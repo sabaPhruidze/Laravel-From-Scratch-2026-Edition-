@@ -23,21 +23,13 @@
      </div>
      <div class="navbar-center hidden lg:flex">
          <ul class="menu menu-horizontal px-1">
-             <li><a>Item 1</a></li>
-             <li>
-                 <details>
-                     <summary>Parent</summary>
-                     <ul class="p-2 bg-base-100 w-40 z-1">
-                         <li><a>Submenu 1</a></li>
-                         <li><a>Submenu 2</a></li>
-                     </ul>
-                 </details>
-             </li>
-             <li><a>Item 3</a></li>
+             <li><a href="/">home</a></li>
+             <li><a href="/about">About us</a> </li>
+             <li><a href="/contact">Contact us</a></li>
          </ul>
      </div>
      <div class="navbar-end">
-         <a class="btn">Button</a>
+         <a class="btn">Login</a>
      </div>
  </div>
  <nav class='flex flex-row justify-evenly'>

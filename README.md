@@ -78,3 +78,4 @@
 - https://daisyui.com/docs/cdn/ cdn ით დავამატე layoutში.
 - bootsrap tailwind ისთვის 
 - navigation ის ცალკე კომპონენტის შექმნა და navigation ლინკების განთავსება
+- შემოვიტანე card daisyui დან და გამოვიყენე index ზე
