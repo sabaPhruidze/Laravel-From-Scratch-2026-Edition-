@@ -6,6 +6,7 @@ use App\Http\Requests\IdeaRequest;
 use App\Http\Requests\StoreIdeaRequest;
 use App\Models\Idea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IdeaController extends Controller
 {
@@ -17,7 +18,11 @@ class IdeaController extends Controller
         //dd($id);// აჩვენებს რა ნომერზეა (კარგია პაგინაციისთვის)
         //$ideas = Idea::all();
         //$idea=Idea::where('id',$id)->first();
-        $ideas = Idea::all();
+        // index ში იქნება ეს ესე რომ კონკრეტული user ის შესაბამისს მონაცემს აჩვენებს
+        $ideas = Idea::query()->where([
+            'user_id' => Auth::id(),
+        ])->get();
+        // უნდა წამოვიღოთ კონკრეტული user ის მონაცემები
         return view('ideas.index', [
             'ideas' => $ideas,
         ]);
@@ -49,7 +54,8 @@ class IdeaController extends Controller
         //min:10 მინიმუმ 10 ასო
         Idea::create([
             "description" => request("description"), //დავიჭირეთ იდეა
-            'state' => 'pending' //??
+            'state' => 'pending', //??
+            'user_id' => Auth::id(), //ან user ესე შემიძლია შევინახო
         ]); // welcome გვერდზე გამოჩნდება
         session()->push('ideas', request('description')); // გავუშვით sessionში. forms ში გამოჩნდება
         return redirect('/forms');

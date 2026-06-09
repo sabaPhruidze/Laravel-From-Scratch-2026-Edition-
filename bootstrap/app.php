@@ -21,6 +21,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectGuestsTo('login');
         // ამით როცა middleware ით დაცულ გვერდზე შევ მომხმარებელი
         //თუ ავტორიზებული არ იქნება login გვერდზე გაუშვებს
+        $middleware->redirectUsersTo('/ideas/index');
+        //ეს დალოგინებუს გადაამისამართებს /ideas/index ზე თუ ეცდება აკრძალულ
+        // გვერდზე შესვლაზე
+
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
