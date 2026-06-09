@@ -6,6 +6,7 @@
 use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route; // როცა დავწერ Route, იგულისხმე Laravel-ის Route კლასი.
 use App\Models\Idea;
+use App\Http\Controllers\Auth\RegisterUserController;
 
 Route::get('/', function () {
     //$ideas = DB::table('ideas') -> get(); // database დან მივიღე data table 'ideas გან'
@@ -121,3 +122,22 @@ Route::delete('/ideas', function () {
     //Idea::truncate(); ესეც შლის უბრალოდ მაშინ როცა eloquent ით ხდება მიღებაც
     return redirect('/forms');
 });
+
+Route::get('/register', [RegisterUserController::class, 'create']);
+Route::post('/register', [RegisterUserController::class, 'store']);
+
+//
+
+/*
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+  <legend class="fieldset-legend">Login</legend>
+
+  <label class="label">Email</label>
+  <input type="email" class="input" placeholder="Email" />
+
+  <label class="label">Password</label>
+  <input type="password" class="input" placeholder="Password" />
+
+  <button class="btn btn-neutral mt-4">Login</button>
+</fieldset>
+*/

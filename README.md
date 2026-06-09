@@ -83,3 +83,4 @@
 - <textarea id="description" name="description" rows="3" class="textarea w-full @error('description') textarea-error @enderror"> textarea ზე error ის შემთხვევაში შესაბამიასდ რომ გასტილოს 
 
 # Authentication Explained
+- შევქმენი ახალი controller : RegisterUserController.php და დამატებით გავაკეთე register გვერდი , routes ში დავაკავშირე და შემდეგ nav კომპონენტში დავამატე /register მისამართი

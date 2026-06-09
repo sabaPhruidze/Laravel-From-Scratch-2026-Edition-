@@ -1,4 +1,4 @@
- <div class="navbar bg-base-100 shadow-sm">
+ <div class="navbar bg-base-200 ">
      <div class="navbar-start">
          <div class="dropdown">
              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -29,7 +29,7 @@
          </ul>
      </div>
      <div class="navbar-end">
-         <a class="btn">Login</a>
+         <a class="btn" href="/register">Register</a>
      </div>
  </div>
  <nav class='flex flex-row justify-evenly'>
