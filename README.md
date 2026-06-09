@@ -86,3 +86,4 @@
 - შევქმენი ახალი controller : RegisterUserController.php და დამატებით გავაკეთე register გვერდი , routes ში დავაკავშირე და შემდეგ nav კომპონენტში დავამატე /register მისამართი
 - registeruserController ში გავუწერე ზუსტად რა ვალიდაციის ფორმები უნდა გაიაროს 
 - hashing password
+- added logout button

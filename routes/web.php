@@ -7,6 +7,7 @@ use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route; // როცა დავწერ Route, იგულისხმე Laravel-ის Route კლასი.
 use App\Models\Idea;
 use App\Http\Controllers\Auth\RegisterUserController;
+use App\Http\Controllers\Auth\SessionsController;
 
 Route::get('/', function () {
     //$ideas = DB::table('ideas') -> get(); // database დან მივიღე data table 'ideas გან'
@@ -125,3 +126,4 @@ Route::delete('/ideas', function () {
 
 Route::get('/register', [RegisterUserController::class, 'create']);
 Route::post('/register', [RegisterUserController::class, 'store']);
+Route::delete('/logout', [SessionsController::class, 'destroy']);

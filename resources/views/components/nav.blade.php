@@ -34,6 +34,13 @@
              <a class="btn" href="/register">Register</a>
          </div>
      @endguest
+     @auth
+         <form action="/logout" method="POST">
+             @csrf
+             @method('DELETE')
+             <button class="btn btn-ghost">Log out</button>
+         </form>
+     @endauth
 
  </div>
  <nav class='flex flex-row justify-evenly'>
