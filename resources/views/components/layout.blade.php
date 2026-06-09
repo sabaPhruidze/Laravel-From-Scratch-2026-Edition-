@@ -12,7 +12,8 @@
         ნაგულისხმევი (default) მნიშვნელობა იყოს "laracasts".
         -->
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en" data-theme='night'>
+{{-- data-theme შეიძლება იყოს coffee , drakula .. themes ომვძებნო ოფიციალურზე --}}
 
 <head>
     <meta charset="utf-8">
@@ -21,7 +22,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>{{ $title }}</title>
     <!--  making common title dynamic -->
-
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     @fonts
 
     <!-- Styles / Scripts -->
@@ -48,18 +51,8 @@
     @endif
 </head>
 
-<body class="bg-gray-700 text-white p-6 max-w-xl mx-auto">
-    <nav class='flex flex-row justify-evenly'>
-        <a href="/">home</a>
-        <a href="/about">About us</a>
-        <a href="/contact">Contact us</a>
-        <a href="/prisma">Prisma</a>
-        <a href="/tasks">tasks</a>
-        <a href='/additional-tasks'>add-tasks</a>
-        <a href="/forms">forms</a>
-        <a href="/ideas/index">index</a>
-        <a href="/ideas/create">create</a>
-    </nav>
+<body>
+    <x-nav />
     <main>
         {{ $slot }}
     </main>
