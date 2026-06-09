@@ -18,7 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->redirectGuestsTo('login');
+        // ამით როცა middleware ით დაცულ გვერდზე შევ მომხმარებელი
+        //თუ ავტორიზებული არ იქნება login გვერდზე გაუშვებს
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

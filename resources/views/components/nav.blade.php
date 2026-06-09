@@ -29,18 +29,24 @@
          </ul>
      </div>
      {{-- @guest ით ამოწმებს რომ თუ სტუმარია მხოლოდ მაშინ აჩვენოს register ღილაკი --}}
-     @guest
+     {{-- @guest
          <div class="navbar-end space-x-2">
              <a class="btn btn-primary" href="/register">Register</a>
              <a class="btn btn-secondary" href="/login">Login</a>
          </div>
-     @endguest
+     @endguest --}}
+     {{-- როცა ავტორიზებულია მაშინ რა გამოჩნდეს @auth --}}
      @auth
          <form action="/logout" method="POST">
              @csrf
              @method('DELETE')
              <button class="btn btn-ghost">Log out</button>
          </form>
+     @else
+         <div class="navbar-end space-x-2">
+             <a class="btn btn-primary" href="/register">Register</a>
+             <a class="btn btn-secondary" href="/login">Login</a>
+         </div>
      @endauth
 
  </div>

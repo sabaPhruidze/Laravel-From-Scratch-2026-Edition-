@@ -88,3 +88,8 @@
 - hashing password
 - added logout button
 - დავამატე login და მუშაობს
+
+# Require Authentication With Middleware
+- foreignIdFor - Laravel-ის migration helper-ია, რომელიც ავტომატურად ქმნის foreign key სვეტს კონკრეტული Model-ისთვის.
+- ideas/index თან დაკავშირებული ყველა route ხელმისაწვდომი უნდა იყოს მხოლოდ მაშინ როცა პირი არის ავთენტიფიცირებული
+- middleware ით როგორ შეგვიძლია რომ განვუსაზღვროთ სად გადაამისამართოს როცა ავთენტიფიცირებული არ არის პირი boostrap + web.php

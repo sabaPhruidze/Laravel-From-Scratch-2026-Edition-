@@ -61,24 +61,25 @@ Route::get('/about/{id}', function ($id) { // '/about' ნაცვლად ნ
     ]);
 });
 
+Route::middleware('auth')->group(function () { // ამით ყველაზე გავრცელდება middlware
 
-//index
-Route::get('/ideas/index', [IdeaController::class, 'index']); // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
-//create
-Route::get('/ideas/create', [IdeaController::class, 'create']); // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
-
-
-//show one
-// {idea} შეიძლება იყოს 2,3.... და Idea ში იპოვის შესაბამის და მოგვაწვდის $idea აქ
-// /{idea} და $idea ერთი და იგივეა აქ . იგივე უნდა ეწეროს სახელი. Route Model Binding.
-//Route Model Binding ნიშნავს, რომ Laravel თვითონ პოულობს ბაზიდან მოდელს (ჩანაწერს) URL-ში გადაცემული ID-ის მიხედვით.
-Route::get('/ideas/index/{idea}', [IdeaController::class, 'show']);
-//edit for visual
-Route::get('/ideas/index/{idea}/edit', [IdeaController::class, 'edit']);
-//update
-Route::patch('/ideas/index/{idea}', [IdeaController::class, 'update']);
-// destroy
-Route::delete('/ideas/index/{idea}', [IdeaController::class, 'destroy']);
+    //index
+    Route::get('/ideas/index', [IdeaController::class, 'index'])->middleware('auth'); // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
+    //middleware('auth'); თუ ავთენტიფიცირებულია მხოლოდ მაშინ შეუშვას
+    //create
+    Route::get('/ideas/create', [IdeaController::class, 'create']); // '/about' ნაცვლად ნებიმმიერი შემიძლია რომ მეწეროს . $id {id} აქ არის დინამიური id მაგ: 1,2,4...
+    //show one
+    // {idea} შეიძლება იყოს 2,3.... და Idea ში იპოვის შესაბამის და მოგვაწვდის $idea აქ
+    // /{idea} და $idea ერთი და იგივეა აქ . იგივე უნდა ეწეროს სახელი. Route Model Binding.
+    //Route Model Binding ნიშნავს, რომ Laravel თვითონ პოულობს ბაზიდან მოდელს (ჩანაწერს) URL-ში გადაცემული ID-ის მიხედვით.
+    Route::get('/ideas/index/{idea}', [IdeaController::class, 'show'])->name('Idea show');
+    //edit for visual
+    Route::get('/ideas/index/{idea}/edit', [IdeaController::class, 'edit']);
+    //update
+    Route::patch('/ideas/index/{idea}', [IdeaController::class, 'update']);
+    // destroy
+    Route::delete('/ideas/index/{idea}', [IdeaController::class, 'destroy']);
+});
 
 // greeting is like a prop that pass it's data by writing that
 //$greeting
@@ -123,10 +124,12 @@ Route::delete('/ideas', function () {
     //Idea::truncate(); ესეც შლის უბრალოდ მაშინ როცა eloquent ით ხდება მიღებაც
     return redirect('/forms');
 });
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [RegisterUserController::class, 'create']); //->middleware('guest'); // როცა guest არის აქ გამოუშვებს
+    Route::post('/register', [RegisterUserController::class, 'store']);
 
-Route::get('/register', [RegisterUserController::class, 'create']);
-Route::post('/register', [RegisterUserController::class, 'store']);
+    Route::get('/login', [SessionsController::class, 'create'])->name('login');
+    Route::post('/login', [SessionsController::class, 'store']);
+});
 
-Route::get('/login', [SessionsController::class, 'create']);
-Route::post('/login', [SessionsController::class, 'store']);
 Route::delete('/logout', [SessionsController::class, 'destroy']);
