@@ -79,3 +79,5 @@
 - bootsrap tailwind ისთვის 
 - navigation ის ცალკე კომპონენტის შექმნა და navigation ლინკების განთავსება
 - შემოვიტანე card daisyui დან და გამოვიყენე index ზე
+- btn ების დიდი არჩევანია გამზადებული ფერების არსებობს textarea და ა.შ უნდა გადავხედ ოფიცილაურ საიტს
+- <textarea id="description" name="description" rows="3" class="textarea w-full @error('description') textarea-error @enderror"> textarea ზე error ის შემთხვევაში შესაბამიასდ რომ გასტილოს 
