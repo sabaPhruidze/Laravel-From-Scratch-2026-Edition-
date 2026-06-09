@@ -30,8 +30,9 @@
      </div>
      {{-- @guest ით ამოწმებს რომ თუ სტუმარია მხოლოდ მაშინ აჩვენოს register ღილაკი --}}
      @guest
-         <div class="navbar-end">
-             <a class="btn" href="/register">Register</a>
+         <div class="navbar-end space-x-2">
+             <a class="btn btn-primary" href="/register">Register</a>
+             <a class="btn btn-secondary" href="/login">Login</a>
          </div>
      @endguest
      @auth

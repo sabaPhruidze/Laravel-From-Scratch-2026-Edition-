@@ -87,3 +87,4 @@
 - registeruserController ში გავუწერე ზუსტად რა ვალიდაციის ფორმები უნდა გაიაროს 
 - hashing password
 - added logout button
+- დავამატე login და მუშაობს
