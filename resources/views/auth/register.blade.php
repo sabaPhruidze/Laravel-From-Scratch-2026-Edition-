@@ -7,11 +7,19 @@
 
                 <label class="label">Name</label>
                 <input type="text" name='name' class="input" placeholder="Your name" required />
-
+                @error('name')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
                 <label class="label">Email</label>
-                <input type="email" email='email' class="input" placeholder="Your Email" required />
+                @error('email')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
+                <input type="email" name='email' class="input" placeholder="Your Email" required />
 
                 <label class="label">Password</label>
+                @error('password')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
                 <input type="password" name='password' class="input" placeholder="Password" required />
 
                 <button class="btn btn-neutral mt-4">Register</button>

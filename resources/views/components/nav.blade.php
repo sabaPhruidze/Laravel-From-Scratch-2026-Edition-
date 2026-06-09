@@ -28,9 +28,13 @@
              <li><a href="/contact">Contact us</a></li>
          </ul>
      </div>
-     <div class="navbar-end">
-         <a class="btn" href="/register">Register</a>
-     </div>
+     {{-- @guest ით ამოწმებს რომ თუ სტუმარია მხოლოდ მაშინ აჩვენოს register ღილაკი --}}
+     @guest
+         <div class="navbar-end">
+             <a class="btn" href="/register">Register</a>
+         </div>
+     @endguest
+
  </div>
  <nav class='flex flex-row justify-evenly'>
 
