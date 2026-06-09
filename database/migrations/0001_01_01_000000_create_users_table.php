@@ -8,6 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * ეს გვიჩვენებს რეგისტრაციისთვის რა არის საჭირო
+     * შემიძლია შევცვალო და name ნაცვლად username მეწეროს
      */
     public function up(): void
     {

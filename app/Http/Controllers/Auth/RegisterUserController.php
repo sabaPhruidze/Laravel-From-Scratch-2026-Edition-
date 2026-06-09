@@ -14,6 +14,6 @@ class RegisterUserController extends Controller
 
     public function store()
     {
-        dd('create the new user and log them in');
+        dd(request()->all()); // ამით ყველაფერი რაც register.blade.php input ში ჩაიწერა გამოიტანა + ტოკენი
     }
 }
