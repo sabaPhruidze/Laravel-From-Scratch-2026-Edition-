@@ -17,7 +17,9 @@
                  <li><a href="/forms">forms</a></li>
                  <li> <a href="/ideas/index">index</a></li>
                  <li><a href="/ideas/create">create</a></li>
-                 <li><a href="/admin">Admin</a></li>
+                 @can('view-admin')
+                     <li><a href="/admin">Admin</a></li>
+                 @endCan
              </ul>
          </div>
          <a class="btn btn-ghost text-xl">daisyUI</a>
@@ -27,7 +29,10 @@
              <li><a href="/">home</a></li>
              <li><a href="/about">About us</a> </li>
              <li><a href="/contact">Contact us</a></li>
-             <li><a href="/admin">Admin</a></li>
+             @can('view-admin')
+                 {{-- @can Blade-ის დირექტივაა, რომელიც ამოწმებს აქვს თუ არა მომხმარებელს კონკრეტული უფლება (permission/ability). --}}
+                 <li><a href="/admin">Admin</a></li>
+             @endCan
          </ul>
      </div>
      {{-- @guest ით ამოწმებს რომ თუ სტუმარია მხოლოდ მაშინ აჩვენოს register ღილაკი --}}
