@@ -8,7 +8,8 @@ use Illuminate\Contracts\Queue\ShouldQueue; //მოგვიწევს, ს�
 use Illuminate\Notifications\Messages\MailMessage; //ეს გვეხმარება, რომ იმეილის დიზაინი (ტექსტები, ლამაზი ღილაკები) კოდით მარტივად ავაწყოთ, HTML-ის წერის გარეშე.
 use Illuminate\Notifications\Notification; // მთავარი "მშობელი" კლასი. მისგან მემკვიდრეობით იღებს შენი IdeaPublished კლასი ყველა იმ თვისებას, რაც ნოტიფიკაციას სჭირდება.
 
-class IdeaPublished extends Notification
+
+class IdeaPublished extends Notification implements ShouldQueue // ამით ვეუბნებით რომ არ დაელოდოს შეტყობინების გაგზავნას . Queue ში გაეშვება ეს კლასი
 {
     use Queueable;
 
@@ -42,7 +43,7 @@ class IdeaPublished extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        $url = url('/ideas/index/' . $this->idea->id);
+        $url = url('/ideas/index/{idea}' . $this->idea->id);
         return (new MailMessage)
             ->greeting('Hello')
             ->line('You succesfully published a new idea') // ეს არის მაგალითები და შემიძლია შევცვალო

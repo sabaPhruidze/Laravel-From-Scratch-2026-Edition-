@@ -200,6 +200,25 @@ route::get('/admin', function () {
 - toMail ში გავწერე თუ რა უნდა გაიგზავნოს და id გავუწერე და დავაკავშირე თავში Idea მოდელთან
 - email როგორ გამოიყურება წინასწარ შეგვიძლია ვნახოთ
 - $saba->notify(new App\Notifications\IdeaPublished(App\Models\Idea::latest()->first())); ამით უკვე გავUშვათ და დაეწერება storage Laravel.log ში. რა გავუშვით ბოლოში
-# When to Queue it Up
+- https://mailpit.axllent.org/ მეილის გასაგზავნად
+- curl -sL https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh | sudo sh ეს გავუშვა დასაყენებლად linux ზე შემდეგ mailpit
 
+-გაგზავნა ხდება ასე:
+1. php artisan tinker
+2. $saba = App\Models\User::first()
+3. $saba->notify(new App\Notifications\IdeaPublished(App\Models\Idea::latest()->first()));
+- ახალი idea_ს დამატებაზეც შეტყობინება მოგვივა
+# When to Queue it Up
+- ეს დავალება ახლა არ შეასრულო, მოგვიანებით ფონურად (background-ში) შეასრულე.- Queue ს გარეშე როცა დარეგისტრირდება რადგანაც მეილის გაგზავნას სჭირდება 3 წამი დაელლოდება და მერე მიუვა მომხმარებელს შეტყობინება, ხოლო queueთი ეგრევე მიუვა შეტყობინება და მოგვიანებით გაიგზავნება მეილი
+- Queue-ში ძირითადად Job-ები ხვდება.
+- ShouldQueue ეს ძალიან მნიშვნელოვანია. ყოველთვის მაშინვე შესრულდება.
+- Queue - Queue არის დავალებების რიგი, რომელიც ელოდება შესრულებას.
+- Job - Job არის ერთი კონკრეტული სამუშაო.
+- work - Worker არის პროცესი, რომელიც Queue-ს უყურებს და Job-ებს ასრულებს.
+- php artisan ით შეგვიძლია ვნახოთ ყველა ბრძანება
+*-* php artisan queue:work აქ ვეუბნებით რომ 1 დაასაქმოს , შესაბამისად გაიგზავნება მეილი'
+- php artisan make:job ქმნის job_ს app ში
+- tinker ში გავუშვი : App\Jobs\UpdateIdeaStatisctics::dispatch();
+- როგორ ვამუშაო 3 ან მეტი worker .
+-php artisan queue:work ეს უშვებს Worker-ს. Worker მუდმივად აკვირდება Queue-ს.
 # How to Get Started Testing Your Code

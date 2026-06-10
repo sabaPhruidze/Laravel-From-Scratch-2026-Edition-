@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\IdeaRequest;
 use App\Http\Requests\StoreIdeaRequest;
 use App\Models\Idea;
+use App\Notifications\IdeaPublished;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -55,19 +56,23 @@ class IdeaController extends Controller
         // ]);
         //validate დაყენებით აღარ იწვევს errors ცარიელის დამატებისას
         //min:10 მინიმუმ 10 ასო
-        Idea::create([
+        $idea = Idea::create([
             "description" => request("description"), //დავიჭირეთ იდეა
             'state' => 'pending', //??
             'user_id' => Auth::id(), //ან user ესე შემიძლია შევინახო
         ]); // welcome გვერდზე გამოჩნდება
         session()->push('ideas', request('description')); // გავუშვით sessionში. forms ში გამოჩნდება
-        return redirect('/forms');
+
         // dd('hello'); dd ნიშნავს:
         //Dump → გამოიტანე მნიშვნელობა ეკრანზე.
         //Die → შეწყვიტე პროგრამის შესრულება.
 
         //dd(request()->all());ყველაფერს ვიღებთ. ეს წამოიღებს ტოკენს და ასევე ტესტს რაც ჩვწერეთ textareaში
         // CSRF- Cross site request forgery ერთი საიტიდან უშვებს ბრძანებას, რომელიც მეორეზე საიტზე, გვერდზე ან აპლიკაციაზე ახდენს გავლენას.
+        //Notify the user
+        $user = Auth::user();
+        $user->notify(new IdeaPublished($idea));
+        return redirect('/forms');
     }
 
     /**
