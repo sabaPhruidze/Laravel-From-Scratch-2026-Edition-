@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 //თუ Laravel-ში რაღაცას ასე იყენებ: Gate, auth,Route, DB, cache:
@@ -37,7 +38,14 @@ class AppServiceProvider extends ServiceProvider
          * მაგრამ ?User ნიშნავს: User | null და რადგან შენ ყოველთვის true-ს აბრუნებ:@can('view-admin') იღებს true-ს და აჩვენებს HTML-ს.
          */
         Gate::define('view-admin', function (User $user) { //?Uსser გახადა არცევითი ამით can ის მიხედავად ხელმისაწვდომი გახადა admin
-            return true;
+            //return true; ყველა დალოგინებულისთვის ხელმისაწვდომია
+            //return $user->role === 'admin'; // ამით კონკრეტული user რომლის id არის 2 დაინახავს admin გვერდს
+            //return $user->isAdmin(); // User model ში გავუწერე isAdmin მეთოდი
+            //return false;
+            if ($user->id === 1) {
+                return Response::allow(); // თუ id ===2 მაშინ ნებას რთავს auth იდან Response
+            }
+            return Response::denyAsNotFound(); //სხვა შემთხვევაში 404 შეცდომას დაწს 403 ნაცვლად
         });
     }
 }

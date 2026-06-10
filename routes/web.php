@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route; // როცა დავწერ Route, 
 use App\Models\Idea;
 use App\Http\Controllers\Auth\RegisterUserController;
 use App\Http\Controllers\Auth\SessionsController;
+use Illuminate\Support\Facades\Gate;
 
 Route::get('/', function () {
     //$ideas = DB::table('ideas') -> get(); // database დან მივიღე data table 'ideas გან'
@@ -134,6 +135,9 @@ Route::middleware('guest')->group(function () {
 
 Route::delete('/logout', [SessionsController::class, 'destroy']);
 
-Route::get('/admin',function(){
+Route::get('/admin', function () {
+    ////->can('view-admin');  ამის ბოლოში გაწერის ნაცვლად შეგვიძლია დავუწეროთ:
+    Gate::authorize('view-admin');
     return 'Private admin only area';
-});
+});// გადაამოწმებს თუ არ არის უფლებამოსილი მაშინ 403 middleware approach
+//This action is unauthorized. იმავე გვერდზე დაუწერს ამას ესეეგი გამოაგდებს
