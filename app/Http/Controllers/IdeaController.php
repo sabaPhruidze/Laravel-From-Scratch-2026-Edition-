@@ -39,6 +39,7 @@ class IdeaController extends Controller
         //$ideas = Idea::all();
         //$idea=Idea::where('id',$id)->first();
         $ideas = Idea::all();
+        // Gate::authorize('create', Idea::class);
         return view('ideas.create', [
             'ideas' => $ideas
         ]);
@@ -80,7 +81,10 @@ class IdeaController extends Controller
         // if (is_null($selectedIdea)) {
         //     abort(404); ვამოწმებთ ამ id ით არის თუ არა data database ში.
         // } თუ არა გაუშვებს abort404ს .404 Not Found ს დაწერს ეს.
-        Gate::authorize('update', $idea); // ideaPolicy update გაეშვება ამით
+        Gate::authorize('update', $idea); // ideaPolicy update გაეშვება ამით ან შემიძლია ჩემითვე დავუწერო
+        // if (Auth::user()->cannot('update', $idea)) {
+        //     dd('Not authorized');
+        // };
         return view('ideas.show', [
             'greeting' => 'Ideas index',
             'owner' => 'Saba Ph',
@@ -93,6 +97,7 @@ class IdeaController extends Controller
      */
     public function edit(Idea $idea)
     {
+        Gate::authorize('update', $idea);
         return view('ideas.edit', [
             'idea' => $idea
         ]);
@@ -103,6 +108,7 @@ class IdeaController extends Controller
      */
     public function update(IdeaRequest $request, Idea $idea)
     {
+        Gate::authorize('update', $idea);
         $idea->update([
             'description' => request('description'),
         ]);
@@ -114,6 +120,7 @@ class IdeaController extends Controller
      */
     public function destroy(Idea $idea)
     {
+        Gate::authorize('update', $idea);
         $idea->delete();
         return redirect('/ideas/index');
     }

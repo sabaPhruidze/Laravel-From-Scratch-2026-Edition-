@@ -36,10 +36,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    // public function isAdmin() bool // აქ გავწერე ლოგიკა და ეს შემდეგ გავუწერე method სახელით appserviceProviderში
-    // {
-    //     return $this->role === 'admin';
-    // }
+    public function isAdmin(): bool // აქ გავწერე ლოგიკა და ეს შემდეგ გავუწერე method სახელით appserviceProviderში
+    {
+        return $this->id === 1;
+    }
     public function ideas(): HasMany
     {
         return $this->hasMany(Idea::class);
