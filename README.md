@@ -161,3 +161,29 @@ route::get('/admin', function () {
 - გმამოსწორდა  php artisan make:policy ამით შევქმენი IdeaPolicy სადაც გავუწერე შემოწმება 
 - კიდევ ერთ რა პრობლემასაც აგვარებს ის თუ როცა გვინდა სხვებს ვაჩვენოთ user ის დაწერილი idea მაგრამ სხვებისვის არ იყოს ხელმისწავდომი მასზე edit or delete
 - IdeaController დავამატე Gate authorization edit, delete ებზე.
+
+
+# Frontend Asset Bundling with Vite
+- Frontend Asset Bundling with Vite მარტივად რომ ვთქვათ, ნიშნავს შენი ვებსაიტის "ფასადის" (JavaScript, CSS, SASS, სურათები, ფონტები) ერთად შეგროვებას, ოპტიმიზაციას და ერთ ან რამდენიმე კომპაქტურ ფაილად შეკვრას (დაბანდლვას), რათა ბრაუზერმა ისინი მაქსიმალურად სწრაფად ჩატვირთოს.
+- vite ცვლილება მომენტალურად აისახება ბრაუზერში (Hot Module Replacement - HMR)
+- იმისათვის, რომ შენს HTML (Blade) გვერდზე ჩაიტვირთოს დამუშავებული CSS და JS, ტრადიციული <link> და <script> ტეგების ნაცვლად იყენებ სპეციალურ ლარაველის დირექტივას: @vite(['resources/css/app.css', 'resources/js/app.js']) (ძიღითადად head ტეგში)
+-   ჯობს რომ CDN არ შემოვიტანოთ არამედ ჩავაშენოთ 
+-   "scripts": {
+        "build": "vite build",  npm run build or npm run dev
+        "dev": "vite"
+    },
+- npm install გავუშვა რომ vite დაყენდეს და მერე npm run dev
+- styles theme რასაც განვსაზღავ მაგალითად:
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-primary:red; 
+}
+შემიძლია მერე გამოვიყენო ჩვეულებრივ კოდში თუ რათქმაუნდა vite თი დაკავშირებული მაქვს როგორც layout
+// npm run dev ის გარეშე აღარ აისახება ის სტილი რაც გავაკეთეთ ამიტომ ჩავრთო
+# Notifications
+
+# When to Queue it Up
+
+# How to Get Started Testing Your Code
