@@ -24,9 +24,9 @@
     <title>{{ $title }}</title>
     <!--  making common title dynamic -->
     {{-- ჯობს რომ CDN ესე არ შემოვიტანოთ არამედ ჩავაშენოთ --}}
-    {{-- <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" /> --}}
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     @fonts
 
     <!-- Styles / Scripts -->
@@ -54,10 +54,11 @@
     @endif
 </head>
 
-<body class="text-primary">
+<body>
     {{-- გავწერე ეს კლასი app.css ში და theme_თი შესაბამისად აისახა --}}
     <x-nav />
     <main>
+        <div class="text-primary">check </div>
         {{ $slot }}
     </main>
     <!-- $slot არის ადგილი, სადაც შვილ კომპონენტიდან გადმოცემული HTML გამოჩნდება -->

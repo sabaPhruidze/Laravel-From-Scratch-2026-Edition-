@@ -182,8 +182,24 @@ route::get('/admin', function () {
 }
 შემიძლია მერე გამოვიყენო ჩვეულებრივ კოდში თუ რათქმაუნდა vite თი დაკავშირებული მაქვს როგორც layout
 // npm run dev ის გარეშე აღარ აისახება ის სტილი რაც გავაკეთეთ ამიტომ ჩავრთო
+//npm run build /Vite, მოამზადე ჩემი CSS და JavaScript production-ისთვის.
 # Notifications
+- როდესაც დაემატება ახალი იდეა , შეტყობინება მიუვა user_საც
+- mail: აგზავნის ლამაზად ფორმატირებულ ელ-ფოსტას.
+- database: ინახავს შეტყობინებას მონაცემთა ბაზაში (სანახავად, მაგალითად, Admin Dashboard-ზე).
+- broadcast: აგზავნის შეტყობინებას Websockets-ის საშუალებით (თვალის დახამხამებაში ხაზზე მყოფი მომხმარებლისთვის).
+- vonage (ყოფილი Nexmo): SMS შეტყობინებებისთვის.
+- slack: შეტყობინებების გაგზავნა Slack-ის არხებში.
 
+- php artisan make:notification OrderProcessed ესე იქმენბა
+
+- თუ ბევრ შეtყობინებას აგზავნი (მაგალითად, 1000 მომხმარებელზე იმეილს), პროცესი რომ არ შენელდეს, შენს შეტყობინების კლასს დაუმატე implements ShouldQueue. ლარაველი მას ავტომატურად გადააგდებს ბექგრაუნდ რიგებში (Queues) და საიტი წამითაც არ გაჭედავს.
+-  use HasFactory, Notifiable; ეს არის Model_ში და აქ შემიძლია ვნახო შვილობილი კლასები
+- php artisan make:notifications-table ამით შევქმენი შესაბამისი table notifications სთვის და რომ აისახოს ვუჩვებთ php artisan migrate
+- php artisan make:notification ამით უკვე შეტყობინების ფოლდერი და ფაილი შევქმენი App ფოლდერში IdeaPublished არის App ფოლდერში
+- toMail ში გავწერე თუ რა უნდა გაიგზავნოს და id გავუწერე და დავაკავშირე თავში Idea მოდელთან
+- email როგორ გამოიყურება წინასწარ შეგვიძლია ვნახოთ
+- $saba->notify(new App\Notifications\IdeaPublished(App\Models\Idea::latest()->first())); ამით უკვე გავUშვათ და დაეწერება storage Laravel.log ში. რა გავუშვით ბოლოში
 # When to Queue it Up
 
 # How to Get Started Testing Your Code
