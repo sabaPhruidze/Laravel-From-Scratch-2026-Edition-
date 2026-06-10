@@ -30,7 +30,13 @@ class AppServiceProvider extends ServiceProvider
         $user არის ამჟამად შესული მომხმარებელი.
         ყველა logged-in user შეძლებს view-admin მოქმედებას.
         */
-        Gate::define('view-admin', function (User $user){
+        /**
+         * Laravel ელოდება, რომ $user აუცილებლად იყოს User ობიექტი.
+         * თუ მომხმარებელი არ არის დალოგინებული,
+         * $user იქნება null და Gate ავტომატურად უარს ამბობს ავტორიზაციაზე.
+         * მაგრამ ?User ნიშნავს: User | null და რადგან შენ ყოველთვის true-ს აბრუნებ:@can('view-admin') იღებს true-ს და აჩვენებს HTML-ს.
+         */
+        Gate::define('view-admin', function (User $user) { //?Uსser გახადა არცევითი ამით can ის მიხედავად ხელმისაწვდომი გახადა admin
             return true;
         });
     }
