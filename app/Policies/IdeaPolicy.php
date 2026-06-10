@@ -13,6 +13,7 @@ class IdeaPolicy
      */
     public function update(User $user, Idea $idea): bool
     {
-        return false; // ამ მომენტში არცერთის update საშუალებას არ მაძლევს 403ით
+        //return false;  // ამ მომენტში არცერთის update საშუალებას არ მაძლევს 403ით
+        return $user->id === $idea->user_id; //ვამოწმებ და თუ შეესაბამება user id idea_ს user_id მაშინ მისცეს უფლებას
     }
 }
