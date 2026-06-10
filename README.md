@@ -222,3 +222,4 @@ route::get('/admin', function () {
 - როგორ ვამუშაო 3 ან მეტი worker .
 -php artisan queue:work ეს უშვებს Worker-ს. Worker მუდმივად აკვირდება Queue-ს.
 # How to Get Started Testing Your Code
+- პრიორიტეტი არ არის ამიტომ უბრალოდ ვუყურებ
