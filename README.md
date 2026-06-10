@@ -60,7 +60,7 @@
 - ამით შეგვიძლია გავუწეროთ ზუსტად რა ტიპის ერორია რომ აჩვენოს
 - @if ($errors->has('description'))
   {{-- ამით ვამოწმებთ არსებობს თუ არა descirption ან აკმაყოფილებს თუ არა validation --}}
-    <p class="text-red-500">{{ $errors->first('description') }}</p>
+      <p class="text-red-500">{{ $errors->first('description') }}</p>
 - @endif
 - https://laravel.com/docs/13.x/validation ვალიდაციაზე დამატებით
 - error ჩაწერის 2 ხერხი input დან წამოსული
@@ -127,6 +127,7 @@
 - AppServiceProvider არის ჩვეულებრივი ფაილი (კლასი), სადაც ამ მექანიზმს ვრთავთ და მის წესებს ვწერთ.
 - გეითი არის თავად „წესი“, ხოლო AppServiceProvider არის „რვეული“
 - -> მაგ: $user->is_super_admin ეს ისარი მიგვითითებს, რომ გვინდა $user ობიექტიდან ავიღოთ მისი კონკრეტული თვისება
+- შევქმენი admin link და დავამატე შესაბამისი route , view's გარეშე
 
 # Authorization Using Policies
 
