@@ -135,9 +135,9 @@ Route::middleware('guest')->group(function () {
 
 Route::delete('/logout', [SessionsController::class, 'destroy']);
 
-Route::get('/admin', function () {
-    ////->can('view-admin');  ამის ბოლოში გაწერის ნაცვლად შეგვიძლია დავუწეროთ:
-    Gate::authorize('view-admin');
-    return 'Private admin only area';
-});// გადაამოწმებს თუ არ არის უფლებამოსილი მაშინ 403 middleware approach
+// Route::get('/admin', function () {
+//     ////->can('view-admin');  ამის ბოლოში გაწერის ნაცვლად შეგვიძლია დავუწეროთ:
+//     Gate::authorize('view-admin');
+//     return 'Private admin only area';
+// });// გადაამოწმებს თუ არ არის უფლებამოსილი მაშინ 403 middleware approach
 //This action is unauthorized. იმავე გვერდზე დაუწერს ამას ესეეგი გამოაგდებს

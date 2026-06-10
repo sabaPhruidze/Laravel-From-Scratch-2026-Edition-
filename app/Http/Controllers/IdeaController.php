@@ -7,6 +7,7 @@ use App\Http\Requests\StoreIdeaRequest;
 use App\Models\Idea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class IdeaController extends Controller
 {
@@ -79,6 +80,7 @@ class IdeaController extends Controller
         // if (is_null($selectedIdea)) {
         //     abort(404); ვამოწმებთ ამ id ით არის თუ არა data database ში.
         // } თუ არა გაუშვებს abort404ს .404 Not Found ს დაწერს ეს.
+        Gate::authorize('update', $idea); // ideaPolicy update გაეშვება ამით
         return view('ideas.show', [
             'greeting' => 'Ideas index',
             'owner' => 'Saba Ph',
