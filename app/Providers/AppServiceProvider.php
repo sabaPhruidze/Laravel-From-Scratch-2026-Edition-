@@ -8,6 +8,7 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
+     * register() = Laravel-ს ვეუბნებით, რა სერვისები არსებობს
      */
     public function register(): void
     {
@@ -16,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
+     * boot() = უკვე დარეგისტრირებული სერვისების გამოყენება/ჩართვა
      */
     public function boot(): void
     {
