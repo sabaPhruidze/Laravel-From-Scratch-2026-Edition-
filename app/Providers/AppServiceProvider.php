@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-
+//თუ Laravel-ში რაღაცას ასე იყენებ: Gate, auth,Route, DB, cache:
+//ხშირად ეს არის Facade, და import ასეთ ადგილას იქნება:Illuminate\Support\Facades\...
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -21,6 +24,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        //authorization rules
+        /*
+        შექმენი authorization rule სახელად view-admin. როცა Laravel შეამოწმებს, აქვს თუ არა მომხმარებელს view-admin უფლება, გაუშვებს ამ ფუნქციას:
+        $user არის ამჟამად შესული მომხმარებელი.
+        ყველა logged-in user შეძლებს view-admin მოქმედებას.
+        */
+        Gate::define('view-admin', function (User $user){
+            return true;
+        });
     }
 }
